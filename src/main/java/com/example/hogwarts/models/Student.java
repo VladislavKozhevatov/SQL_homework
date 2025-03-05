@@ -24,17 +24,17 @@ public class Student {
     public Student() {
     }
 
-    public Student(long id, int age, String name) {
+    public Student(Long id, int age, String name) {
         this.id = id;
         this.age = age;
         this.name = name;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -72,8 +72,9 @@ public class Student {
         return "Student{" +
                 "id=" + id +
                 ", age=" + age +
-                ", name='" + name + '\'' +
-                ", faculty=" + faculty.getName() + faculty.getColor()+
+                ", name='" + name + '\''
+                +
+//                ", faculty=" + faculty.getName() + faculty.getColor()+
                 '}';
     }
 }

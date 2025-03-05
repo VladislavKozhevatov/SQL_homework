@@ -23,7 +23,7 @@ public class StudentController {
     }
 
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public Student findStudent(@PathVariable long id) {
         return studentService.findStudent(id);
     }
@@ -44,13 +44,13 @@ public class StudentController {
     }
 
 
-    @PutMapping()
+    @PutMapping("/{id}")
     public Student changeStudent(@RequestBody Student student) {
 
         return studentService.changeStudent(student);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public void deleteStudent(@PathVariable long id) {
         studentService.deleteStudent(id);
     }
