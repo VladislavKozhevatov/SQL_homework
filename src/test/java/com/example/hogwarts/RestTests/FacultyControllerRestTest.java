@@ -41,7 +41,6 @@ public class FacultyControllerRestTest {
     private FacultyRepository facultyRepository;
 
 
-
     @Test
     public void testAddFaculty() throws Exception {//тест Create запроса
         //Добавляем новый факультет и задаём поля
@@ -67,7 +66,7 @@ public class FacultyControllerRestTest {
         updatedfaculty.setColor("red");
         HttpEntity<Faculty> request = new HttpEntity<>(updatedfaculty);
 
-        ResponseEntity<Faculty> createResponse = restTemplate.exchange("http://localhost:"+port+"/faculty",HttpMethod.PUT,request,Faculty.class);
+        ResponseEntity<Faculty> createResponse = restTemplate.exchange("http://localhost:" + port + "/faculty", HttpMethod.PUT, request, Faculty.class);
         Assertions.assertThat(createResponse.getStatusCode()).isEqualTo(HttpStatus.OK); //проверяем что статус после изменения 200 ОК успешно
 
     }
@@ -82,7 +81,7 @@ public class FacultyControllerRestTest {
         faculty.setName("Gryffindor");
         faculty.setColor("red");
 
-        ResponseEntity<Faculty> response = restTemplate.getForEntity("/faculty"+ facultyId, Faculty.class);
+        ResponseEntity<Faculty> response = restTemplate.getForEntity("/faculty" + facultyId, Faculty.class);
 
         Assertions.assertThat(response.getStatusCode().is2xxSuccessful());
     }
@@ -116,7 +115,7 @@ public class FacultyControllerRestTest {
                 new ParameterizedTypeReference<List<Faculty>>() {
                 });
         List<Faculty> faculties = response.getBody();
-        Assertions.assertThat(faculties.size()==1); //проверяем что размер листа студентов именно 1
+        Assertions.assertThat(faculties.size() == 1); //проверяем что размер листа студентов именно 1
         Assertions.assertThat(response.getStatusCode().is2xxSuccessful());
     }
 }

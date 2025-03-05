@@ -60,6 +60,7 @@ public class StudentControllerRestTest {
         student.setAge(20);
         student.setName("Антон");
         return student;
+
     }
 
     @Test

@@ -8,20 +8,20 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class ExeptionApiHandler {
-  public class ExceptionApiHandler {
+    public class ExceptionApiHandler {
 
-    @ExceptionHandler(NotFoundException.class)
-    public ResponseEntity<ErrorMessage> notFoundException(NotFoundException exception) {
-      return ResponseEntity
-              .status(HttpStatus.NOT_FOUND)
-              .body(new ErrorMessage(exception.getMessage()));
-    }
+        @ExceptionHandler(NotFoundException.class)
+        public ResponseEntity<ErrorMessage> notFoundException(NotFoundException exception) {
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .body(new ErrorMessage(exception.getMessage()));
+        }
 
-    @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<ErrorMessage> illegalArgumentException(IllegalArgumentException exception) {
-      return ResponseEntity
-              .status(HttpStatus.NOT_FOUND)
-              .body(new ErrorMessage(exception.getMessage()));
+        @ExceptionHandler(IllegalArgumentException.class)
+        public ResponseEntity<ErrorMessage> illegalArgumentException(IllegalArgumentException exception) {
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .body(new ErrorMessage(exception.getMessage()));
+        }
     }
-  }
 }

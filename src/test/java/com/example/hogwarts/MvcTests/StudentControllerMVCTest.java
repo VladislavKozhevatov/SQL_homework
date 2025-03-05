@@ -38,10 +38,10 @@ public class StudentControllerMVCTest {
     private StudentController studentController;
 
     @Test
-    public void AddStudentTest() throws Exception{
+    public void AddStudentTest() throws Exception {
         JSONObject studentObject = new JSONObject();
-        studentObject.put("name","Антон");
-        studentObject.put("age",20);
+        studentObject.put("name", "Антон");
+        studentObject.put("age", 20);
 
 
     }

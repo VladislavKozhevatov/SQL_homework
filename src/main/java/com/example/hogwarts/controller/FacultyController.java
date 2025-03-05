@@ -34,8 +34,8 @@ public class FacultyController {
     }
 
     @GetMapping("/colorOrName")
-    public Faculty getFacultyByColorOrName(@RequestParam (required = false) String color,
-                                           @RequestParam (required = false) String name) {
+    public Faculty getFacultyByColorOrName(@RequestParam(required = false) String color,
+                                           @RequestParam(required = false) String name) {
         return facultyService.findFacultyByColorOrName(color, name);
     }
 

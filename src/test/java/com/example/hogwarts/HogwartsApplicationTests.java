@@ -23,7 +23,7 @@ class HogwartsApplicationTests {
 	private TestRestTemplate restTemplate;
 
 
-    @Test
+	@Test
 	void contextLoads() throws Exception {
 		Assertions.assertThat(studentController).isNotNull();
 	}
