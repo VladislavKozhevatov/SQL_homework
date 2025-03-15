@@ -3,9 +3,12 @@ package com.example.hogwarts.controller;
 import com.example.hogwarts.models.Faculty;
 import com.example.hogwarts.models.Student;
 import com.example.hogwarts.service.StudentService;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.List;
 
 @RestController
 @RequestMapping("/student")
@@ -54,4 +57,22 @@ public class StudentController {
     public void deleteStudent(@PathVariable long id) {
         studentService.deleteStudent(id);
     }
+
+    @GetMapping("/countNumber")
+    public ResponseEntity<Integer> getTotalNumberOfStudents() {
+        Integer totalCount = studentService.getTotalNumberOfStudents();
+        return ResponseEntity.ok(totalCount);
+    }
+
+    @GetMapping("/countAvgAge")
+    public ResponseEntity<Double> getAvgAgeOfStudents() {
+        Double averageAge = studentService.getAvgAgeOfStudents();
+        return ResponseEntity.ok(averageAge);
+    }
+
+//    @GetMapping("/countAvgAge")
+//    public ResponseEntity <List<Student>> getLast5Students() {
+//        List<Student> lastFive = studentService.getLast5Students();
+//        return ResponseEntity.ok(lastFive);
+//    }
 }

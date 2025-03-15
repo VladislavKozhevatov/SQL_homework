@@ -54,6 +54,7 @@ public class StudentServiceImpl implements StudentService {
         return studentRepository.findByAgeBetween(minAge, maxAge);
     }
 
+
     private void validateId(long id) {
         if (studentRepository.findById(id).isEmpty()) {
             throw new NotFoundException("Студент с id = " + id + " не существует");
@@ -65,4 +66,20 @@ public class StudentServiceImpl implements StudentService {
             throw new NotFoundException("Студента с возрастом - " + age + " не существует");
         }
     }
+
+    @Override
+    public Integer getTotalNumberOfStudents() {
+        return studentRepository.getTotalNumberOfStudents();
+    }
+
+    @Override
+    public Double getAvgAgeOfStudents(){
+        return studentRepository.getAvgAgeOfStudents();
+    }
+
+//    @Override
+//    public List <Student> getLast5Students(){
+//        return studentRepository.getLast5Students();
+//    }
+
 }
