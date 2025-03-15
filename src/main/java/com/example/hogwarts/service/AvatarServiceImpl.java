@@ -96,7 +96,6 @@ private String avatarsDir;
 //    }
 
 
-
     private String getExtensions(String fileName){
         return fileName.substring(fileName.lastIndexOf(".")+1);
     }

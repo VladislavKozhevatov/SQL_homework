@@ -33,7 +33,7 @@ public class AvatarController {
     }
 
     @GetMapping(value = "/{studentId}/avatar/preview")
-    public ResponseEntity<byte[]> downloadAvatar (@PathVariable long studentId){
+    public ResponseEntity<byte[]> downloadAvatar(@PathVariable long studentId) {
         Avatar avatar = avatarService.findAvatar(studentId);
 
         HttpHeaders headers = new HttpHeaders();
@@ -47,13 +47,13 @@ public class AvatarController {
     }
 
     @GetMapping(value = "/{studentId}/avatar")
-    public void downloadAvatar (@PathVariable Long studentId, HttpServletResponse response) throws IOException{
+    public void downloadAvatar(@PathVariable Long studentId, HttpServletResponse response) throws IOException {
         Avatar avatar = avatarService.findAvatar(studentId);
 
         Path path = Path.of(avatar.getFilePath());
 
         try (InputStream is = Files.newInputStream(path);
-             OutputStream os = response.getOutputStream()){
+             OutputStream os = response.getOutputStream()) {
             response.setStatus(200);
             response.setContentType(avatar.getMediaType());
             response.setContentLength((int) avatar.getFileSize());
@@ -61,15 +61,16 @@ public class AvatarController {
         }
     }
 
-    @PostMapping(value = "/{studentId}/avatar", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)//содержит всю информацию о загружаемом файле, начиная с пути, где он лежит, заканчивая размером файла.
+    @PostMapping(value = "/{studentId}/avatar", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+//содержит всю информацию о загружаемом файле, начиная с пути, где он лежит, заканчивая размером файла.
     public ResponseEntity<String> uploadAvatar(@PathVariable Long studentId, @RequestParam MultipartFile avatar) throws IOException {
         avatarService.uploadAvatar(studentId, avatar);//В запросе получаем идентификатор студента и репрезентацию загружаемого файла и предаем два этих значения в сервис.
         return ResponseEntity.ok().build();
     }
 
     @GetMapping(value = "/avatar/{page}/{size}")
-    public ResponseEntity<Page<Avatar>> downloadAvatarByPage (@RequestParam("page") Integer page, @RequestParam("size") Integer size, HttpServletResponse response) throws IOException{
-        Pageable pageable = PageRequest.of(page,size);
+    public ResponseEntity<Page<Avatar>> downloadAvatarByPage(@RequestParam("page") Integer page, @RequestParam("size") Integer size, HttpServletResponse response) throws IOException {
+        Pageable pageable = PageRequest.of(page, size);
         Page<Avatar> avatars = avatarRepository.findAll(pageable);
         return ResponseEntity.ok(avatars);
 

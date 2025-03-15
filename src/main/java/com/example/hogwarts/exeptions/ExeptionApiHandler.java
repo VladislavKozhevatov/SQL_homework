@@ -1,5 +1,4 @@
 package com.example.hogwarts.exeptions;
-
 import org.springdoc.api.ErrorMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

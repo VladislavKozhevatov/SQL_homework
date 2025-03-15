@@ -1,6 +1,5 @@
 package com.example.hogwarts.models;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 

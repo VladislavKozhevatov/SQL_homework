@@ -1,11 +1,8 @@
 package com.example.hogwarts.controller;
-
-
 import com.example.hogwarts.models.Faculty;
 import com.example.hogwarts.models.Student;
 import com.example.hogwarts.service.FacultyService;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Collection;
 
 @RestController

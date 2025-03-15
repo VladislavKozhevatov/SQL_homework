@@ -16,4 +16,5 @@ public interface AvatarService {
 //   List<Avatar> findAllByPage ();
 
 //    List<Avatar> findAllByPage(Integer page, Integer size);
+
 }

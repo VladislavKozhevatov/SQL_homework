@@ -4,7 +4,6 @@ import com.example.hogwarts.exeptions.NotFoundException;
 import com.example.hogwarts.models.Faculty;
 import com.example.hogwarts.repository.FacultyRepository;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service

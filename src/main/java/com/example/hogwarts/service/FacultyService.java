@@ -1,7 +1,6 @@
 package com.example.hogwarts.service;
 
 import com.example.hogwarts.models.Faculty;
-
 import java.util.List;
 
 public interface FacultyService {

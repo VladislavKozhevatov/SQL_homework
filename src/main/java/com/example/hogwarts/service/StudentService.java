@@ -19,9 +19,9 @@ public interface StudentService {
 
     List<Student> findStudentsByAgeBetween(int minAge, int maxAge);
 
-   public  Integer getTotalNumberOfStudents();
+    public Integer getTotalNumberOfStudents();
 
-   public  Double getAvgAgeOfStudents();
+    public Double getAvgAgeOfStudents();
 
 //   public List<Student> getLast5Students();
 }
