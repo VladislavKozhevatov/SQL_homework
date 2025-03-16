@@ -2,6 +2,8 @@ package com.example.hogwarts.service;
 
 import com.example.hogwarts.models.Avatar;
 import com.example.hogwarts.models.Faculty;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -13,8 +15,5 @@ public interface AvatarService {
 
     Avatar findAvatar(long studentId);
 
-//   List<Avatar> findAllByPage ();
-
-//    List<Avatar> findAllByPage(Integer page, Integer size);
-
+    Page<Avatar> findAllPaginated(int pageNumber, int pageSize, String sortField, Sort.Direction direction);
 }

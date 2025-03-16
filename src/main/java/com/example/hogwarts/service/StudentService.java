@@ -23,5 +23,5 @@ public interface StudentService {
 
     public Double getAvgAgeOfStudents();
 
-//   public List<Student> getLast5Students();
+   public List<Student> getLast5Students();
 }

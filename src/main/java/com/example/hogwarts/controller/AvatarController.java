@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -68,11 +69,10 @@ public class AvatarController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping(value = "/avatar/{page}/{size}")
-    public ResponseEntity<Page<Avatar>> downloadAvatarByPage(@RequestParam("page") Integer page, @RequestParam("size") Integer size, HttpServletResponse response) throws IOException {
+    @GetMapping(value = "/{page}/{size}")
+    public ResponseEntity<Page<Avatar>> downloadAvatarByPage(@PathVariable("page") int page, @PathVariable("size") int size) throws IOException {
         Pageable pageable = PageRequest.of(page, size);
-        Page<Avatar> avatars = avatarRepository.findAll(pageable);
+        Page<Avatar> avatars = avatarService.findAllPaginated(page, size, "id", Sort.Direction.DESC);
         return ResponseEntity.ok(avatars);
-
     }
 }

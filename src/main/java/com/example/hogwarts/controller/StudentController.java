@@ -69,9 +69,9 @@ public class StudentController {
         return ResponseEntity.ok(averageAge);
     }
 
-//    @GetMapping("/countAvgAge")
-//    public ResponseEntity <List<Student>> getLast5Students() {
-//        List<Student> lastFive = studentService.getLast5Students();
-//        return ResponseEntity.ok(lastFive);
-//    }
+    @GetMapping("/getLastFive")
+    public ResponseEntity <List<Student>> getLast5Students() {
+        List<Student> lastFive = studentService.getLast5Students();
+        return ResponseEntity.ok(lastFive);
+    }
 }

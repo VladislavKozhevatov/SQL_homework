@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -37,6 +38,10 @@ private String avatarsDir;
     public AvatarServiceImpl(AvatarRepository avatarRepository, StudentRepository studentRepository) {
         this.avatarRepository = avatarRepository;
         this.studentRepository = studentRepository;
+    }
+
+    public AvatarServiceImpl() {
+
     }
 
     @Override
@@ -88,12 +93,12 @@ private String avatarsDir;
     }
 
 
+    @Override
+    public Page<Avatar> findAllPaginated(int pageNumber, int pageSize, String sortField, Sort.Direction direction) {
+        Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by(direction, sortField));
+        return avatarRepository.findAll(pageable);
 
-//    @Override
-//    public List<Avatar> findAllByPage(Integer page, Integer size) {
-//        PageRequest pageRequest = PageRequest.of(page - 1, size );
-//        return avatarRepository.findAll(pageRequest).getContent();
-//    }
+    }
 
 
     private String getExtensions(String fileName){
