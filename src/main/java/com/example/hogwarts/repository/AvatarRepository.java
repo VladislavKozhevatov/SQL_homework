@@ -12,6 +12,6 @@ public interface AvatarRepository extends JpaRepository<Avatar,Long> {
 
     Optional<Avatar> findByStudentId (Long studentId);
 
-    Page<Avatar> findAllPaginated(Pageable pageable);
+    //   Page<Avatar> findAllPaginated(Pageable pageable);
 
 }
