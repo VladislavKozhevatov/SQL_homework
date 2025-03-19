@@ -6,6 +6,7 @@ import com.example.hogwarts.models.Student;
 import com.example.hogwarts.repository.AvatarRepository;
 import com.example.hogwarts.repository.StudentRepository;
 import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -28,6 +29,7 @@ import static java.nio.file.StandardOpenOption.CREATE_NEW;
 @Service
 @Transactional
 public class AvatarServiceImpl implements AvatarService{
+@Autowired
 private AvatarRepository avatarRepository;
 private StudentRepository studentRepository;
 

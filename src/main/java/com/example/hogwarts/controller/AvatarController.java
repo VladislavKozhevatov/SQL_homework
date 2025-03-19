@@ -69,8 +69,8 @@ public class AvatarController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping(value = "/{page}/{size}")
-    public ResponseEntity<Page<Avatar>> downloadAvatarByPage(@PathVariable("page") int page, @PathVariable("size") int size) throws IOException {
+    @GetMapping(value = "/all")
+    public ResponseEntity<Page<Avatar>> downloadAvatarByPage(@RequestParam("page") int page, @RequestParam("size") int size) throws IOException {
         Pageable pageable = PageRequest.of(page, size);
         Page<Avatar> avatars = avatarService.findAllPaginated(page, size, "id", Sort.Direction.DESC);
         return ResponseEntity.ok(avatars);
