@@ -5,6 +5,9 @@ import com.example.hogwarts.models.Student;
 import java.util.List;
 
 public interface StudentService {
+
+    public List<Student> getStudentsByName(String name);
+
     Student addStudent(Student student);
 
     Student findStudent(long id);

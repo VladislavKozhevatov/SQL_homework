@@ -19,6 +19,13 @@ public class StudentController {
         this.studentService = studentService;
     }
 
+    @GetMapping("/by-name")
+    public ResponseEntity<List<Student>> getStudentsByName(@RequestParam("name") String name){
+        List<Student> students = studentService.getStudentsByName(name);
+        return ResponseEntity.ok(students);
+    }
+
+
     @PostMapping
     public Student addStudent(@RequestBody Student student) {
         return studentService.addStudent(student);

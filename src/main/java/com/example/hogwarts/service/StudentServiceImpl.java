@@ -21,6 +21,11 @@ public class StudentServiceImpl implements StudentService {
         return studentRepository.save(student);
     }
 
+   public List<Student> getStudentsByName(String name){
+        return studentRepository.getStudentsByName(name);
+   }
+
+
     @Override
     public Student findStudent(long id) {
         validateId(id);
