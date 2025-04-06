@@ -3,10 +3,14 @@ package com.example.hogwarts.service;
 import com.example.hogwarts.exeptions.NotFoundException;
 import com.example.hogwarts.models.Faculty;
 import com.example.hogwarts.repository.FacultyRepository;
+import org.apache.commons.lang3.stream.IntStreams;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.IntStream;
 
 @Service
 public class FacultyServiceImpl implements FacultyService {
@@ -39,6 +43,29 @@ public class FacultyServiceImpl implements FacultyService {
         return facultyRepository.findAll();
     }
 
+    //STREAM-API
+    @Override
+    public String getLongestFacultyName(){
+        return facultyRepository.findAll()
+                .stream()
+                .map(Faculty::getName)
+                .sorted(Comparator.reverseOrder())
+                .findFirst().get();
+    }
+
+    public Integer getStreamParallelAmount(){
+        long startTime = System.nanoTime();
+        int sum = IntStream.iterate(1,a->a+1)
+                .parallel()
+                .limit(1_000_000)
+                .reduce(0, Integer::sum);
+        long endTime = System.nanoTime();
+        long duration = endTime - startTime;
+        System.out.println("Метод выполнился за" +(duration/1_000_000)+ "мс");
+        return sum;
+    }
+
+    //
     @Override
     public List<Faculty> getFacultiesByColor(String color) {
         logger.info("was invoked method to get all faculties by color");

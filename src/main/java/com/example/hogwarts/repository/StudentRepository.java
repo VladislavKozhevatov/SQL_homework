@@ -15,6 +15,8 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 
     List<Student> findByAgeBetween(int minAge, int maxAge);
 
+    List<Student> findAll ();
+
     @Query(value = "SELECT COUNT(*) FROM public.student", nativeQuery = true)
     Integer getTotalNumberOfStudents();
 

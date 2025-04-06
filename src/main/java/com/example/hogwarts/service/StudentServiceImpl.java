@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -48,6 +49,27 @@ public class StudentServiceImpl implements StudentService {
         logger.info("was invoked method for searching all of students in university");
         return studentRepository.findAll();
     }
+
+    // STREAM-API
+    @Override
+    public List<String> findAllStudentsWhichNameStarts(String letter){
+        return studentRepository.findAll()
+                .stream()//запуск потока
+                .map(Student::getName) //преобразуем каждый объект студента в его имя
+                .sorted()
+                .filter(i-> i.startsWith(letter.toUpperCase())) //фильтрация имён по первой букве
+                .map(String::toUpperCase) //Преобразуем каждое имя в верхний регистр
+                .collect(Collectors.toList());//собираем поток в список строк
+    }
+
+    @Override
+    public Integer getAverageAgeStudents(){
+       return studentRepository.findAll()
+               .stream()
+               .map(Student::getAge)
+               .reduce(0,Integer::sum)/studentRepository.findAll().size();
+    }
+    //
 
     @Override
     public List<Student> getStudentsByAge(int age) {

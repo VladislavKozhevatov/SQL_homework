@@ -25,6 +25,18 @@ public class StudentController {
         return ResponseEntity.ok(students);
     }
 
+    //STREAM-API
+    @GetMapping("/getNameStudentWhichStartFrom")
+    public List<String> getStudentByNameWhichStartFrom (@RequestParam("letter") String letter){
+        return studentService.findAllStudentsWhichNameStarts(letter);
+    }
+
+    @GetMapping("/getAvgAgeStudents")
+    public Integer getAverageAgeStudents (){
+        return studentService.getAverageAgeStudents();
+    }
+
+    //
 
     @PostMapping
     public Student addStudent(@RequestBody Student student) {

@@ -25,6 +25,14 @@ public class FacultyController {
         return facultyService.findFaculty(id);
     }
 
+    //STREAM-API
+
+    @GetMapping("/getLongestFacultyName")
+    public String getLongestFacultyName() {
+        return facultyService.getLongestFacultyName();
+    }
+
+
     @GetMapping("/color")
     public Collection<Faculty> getFacultiesByColor(@RequestParam String color) {
         return facultyService.getFacultiesByColor(color);
