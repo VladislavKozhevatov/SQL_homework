@@ -32,6 +32,10 @@ public class FacultyController {
         return facultyService.getLongestFacultyName();
     }
 
+    @GetMapping("/getStreamParallelAmount")
+    public Integer getStreamParallelAmount(){
+        return facultyService.getStreamParallelAmount();
+    }
 
     @GetMapping("/color")
     public Collection<Faculty> getFacultiesByColor(@RequestParam String color) {

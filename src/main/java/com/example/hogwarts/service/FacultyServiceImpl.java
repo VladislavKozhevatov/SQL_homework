@@ -52,7 +52,7 @@ public class FacultyServiceImpl implements FacultyService {
                 .sorted(Comparator.reverseOrder())
                 .findFirst().get();
     }
-
+    @Override
     public Integer getStreamParallelAmount(){
         long startTime = System.nanoTime();
         int sum = IntStream.iterate(1,a->a+1)

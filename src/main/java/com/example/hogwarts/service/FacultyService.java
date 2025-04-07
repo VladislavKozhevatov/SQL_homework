@@ -21,4 +21,6 @@ public interface FacultyService {
 
     public String getLongestFacultyName();
 
+    public Integer getStreamParallelAmount();
+
 }
