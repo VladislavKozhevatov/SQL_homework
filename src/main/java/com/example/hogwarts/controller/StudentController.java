@@ -36,6 +36,16 @@ public class StudentController {
         return studentService.getAverageAgeStudents();
     }
 
+    //ПОТОКИ
+
+    @GetMapping("/getStudentsPrintParallel")
+    public void getStudentsPrintParallel(){
+        studentService.getStudentsPrintParallel();
+    }
+    @GetMapping("/getStudentsPrintSyncronized")
+    public void getStudentsPrintSynchronized(){
+        studentService.getStudentsPrintSynchronized();
+    }
     //
 
     @PostMapping

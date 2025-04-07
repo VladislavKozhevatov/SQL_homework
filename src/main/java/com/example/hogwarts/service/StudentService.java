@@ -33,4 +33,8 @@ public interface StudentService {
     List<String> findAllStudentsWhichNameStarts(String letter);
 
     Integer getAverageAgeStudents();
+
+// ПОТОКИ
+    public void getStudentsPrintParallel();
+    public void getStudentsPrintSynchronized();
 }

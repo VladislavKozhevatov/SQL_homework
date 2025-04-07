@@ -69,6 +69,51 @@ public class StudentServiceImpl implements StudentService {
                .map(Student::getAge)
                .reduce(0,Integer::sum)/studentRepository.findAll().size();
     }
+    // ПОТОКИ
+
+    @Override
+    public void getStudentsPrintParallel(){
+        studentRepository.findAll()
+                .stream()
+                .map(Student::getName)
+                .limit(3)
+                .forEach(System.out::println);
+
+        new Thread(()-> {
+            try {
+                Thread.sleep(2000);
+            }catch (InterruptedException e){
+                throw new RuntimeException(e);
+            }
+            studentRepository.findAll()
+                    .stream()
+                    .map(Student::getName)
+                    .skip(3)
+                    .limit(3)
+                    .forEach(System.out::println);
+        }).start();
+
+        new Thread (()-> {
+            try {
+                Thread.sleep(2000);
+            }catch (InterruptedException e){
+                throw new RuntimeException(e);
+            }
+            studentRepository.findAll()
+                    .stream()
+                    .map(Student::getName)
+                    .skip(6)
+                    .forEach(System.out::println);
+        }).start();
+
+    }
+
+    @Override
+    public void getStudentsPrintSynchronized(){
+       synchronized (StudentServiceImpl.class){
+        getStudentsPrintParallel();
+       }
+    }
     //
 
     @Override
