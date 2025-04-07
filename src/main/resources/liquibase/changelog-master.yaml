@@ -1,0 +1,9 @@
+databaseChangeLog:
+
+#  - changeSet:
+#      id: 1
+#      author: vkozhevatov
+#      changes:
+#        - sqlFile:
+#            path: classpath:liquibase/scripts/index-practice.sql
+#            relativeToChangelogFile: false
